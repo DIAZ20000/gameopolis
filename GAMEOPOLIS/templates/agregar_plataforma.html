@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Plataforma</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1B1726; /* Fondo negro oscuro */
+            color: #ffffff; /* Color del texto blanco */
+        }
+
+        .navbar {
+            background-color: transparent !important;
+        }
+
+        .navbar-brand {
+            color: #FFFFFF !important;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav a {
+            color: #FFFFFF !important;
+            font-weight: 600;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav a:hover {
+            background-color: #FF5A2C;
+            border-color: #FF5A2C;
+        }
+
+        .navbar-nav .nav-item.active a {
+            background-color: #FF5A2C;
+            border-color: #FF5A2C;
+        }
+
+        .container {
+            background-color: #2A223A; /* Fondo oscuro para el contenedor */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        .form-control, .form-control-file, .form-control:focus, .btn-primary {
+            background-color: #3F3456; /* Fondo oscuro para los inputs */
+            color: #ffffff; /* Color del texto en los inputs */
+            border: 1px solid #444444; /* Borde oscuro */
+        }
+
+        .btn-primary {
+            background-color: #FF5A2C; /* Color del botón primario */
+            border-color: #FF5A2C;
+        }
+
+        .btn-primary:hover {
+            background-color: #E04C1F; /* Color del botón primario al pasar el cursor */
+            border-color: #E04C1F;
+        }
+
+        .custom-file-input {
+            cursor: pointer;
+        }
+
+        .custom-file-label::after {
+            content: "Seleccionar";
+            cursor: pointer;
+        }
+
+        .img-preview {
+            width: 100%;
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            border: 2px solid #444444; /* Borde oscuro para la vista previa de la imagen */
+            display: none;
+        }
+
+        .img-preview-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+
+        .alert-message {
+            background-color: #28a745; /* Fondo verde para el mensaje de alerta */
+            color: #ffffff; /* Texto blanco para el mensaje de alerta */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        table {
+            background-color: #3F3456; /* Fondo oscuro para la tabla */
+        }
+
+        table th, table td {
+            color: #FFFFFF; /* Color del texto en la tabla */
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Sistema de Gestión de Videojuegos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="{{ url_for('home_sistema') }}" class="btn btn-primary">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('agregar_videojuego') }}" class="btn btn-primary">Agregar Videojuego</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Agregar Plataforma</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert-message">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h2>Agregar Plataforma</h2>
+    <form action="{{ url_for('agregar_plataforma') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="imagen">Imagen:</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="imagen" name="imagen" accept="image/*" required>
+                <label class="custom-file-label" for="imagen">
+                    <i class="fas fa-image"></i> Seleccionar imagen
+                </label>
+            </div>
+            <div class="img-preview-container">
+                <img id="img-preview" class="img-preview" src="#" alt="Vista previa de la imagen">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+
+    <h2 class="mt-5">Lista de Plataformas</h2>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plataforma in plataformas %}
+            <tr>
+                <td>{{ plataforma[0] }}</td>
+                <td>{{ plataforma[1] }}</td>
+                <td><img src="{{ plataforma[2] }}" alt="{{ plataforma[1] }}" width="100"></td>
+                <td>
+                    <form action="{{ url_for('eliminar_plataforma', id=plataforma[0]) }}" method="POST" style="display:inline-block;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                    <a href="{{ url_for('editar_plataforma', id=plataforma[0]) }}" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.querySelector('.custom-file-input').addEventListener('change', function(event) {
+        let inputFile = event.currentTarget;
+        let fileName = inputFile.files[0].name;
+        let label = inputFile.nextElementSibling;
+        label.innerHTML = '<i class="fas fa-image"></i> ' + fileName;
+
+        let file = inputFile.files[0];
+        let reader = new FileReader();
+
+        reader.onload = function(e) {
+            let imgPreview = document.getElementById('img-preview');
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block';
+        }
+
+        reader.readAsDataURL(file);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let alertMessage = document.querySelector('.alert-message');
+        if (alertMessage.textContent !== '') {
+            alertMessage.style.display = 'block';
+            setTimeout(function() {
+                alertMessage.style.display = 'none';
+            }, 3000);
+        }
+    });
+</script>
+</body>
+</html>

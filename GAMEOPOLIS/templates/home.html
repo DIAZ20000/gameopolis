@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Videojuegos</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Estilos personalizados -->
+  <style>
+    /* Estilos Generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: black; /* Fondo negro */
+      color: white; /* Texto blanco */
+    }
+
+    /* Estilos para el encabezado */
+    header {
+      background-image: url('/static/imagen/cola.jpg'); /* Ruta de la imagen de fondo */
+      background-size: cover;
+      background-position: top center;
+      padding: 80px 0;
+      border-bottom: 2px solid #ffcc00;
+      text-align: center;
+      height: 100vh; /* Toma toda la altura de la pantalla */
+      width: 100%; /* Toma toda la anchura de la pantalla */
+      position: relative;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: white; /* Texto blanco */
+    }
+    .search-form {
+      margin-top: 30px;
+    }
+
+    /* Estilos para el logo */
+    .logo {
+      max-width: 200px;
+      margin: 20px auto;
+    }
+
+    /* Estilos para el pie de página */
+    footer {
+      background-color: #343a40;
+      color: #fff;
+      padding: 50px 0;
+      text-align: center;
+      margin-top: -2px;
+    }
+    footer a {
+      color: #fff;
+    }
+
+    /* Estilos para el carrusel */
+    .carousel-item img {
+      object-fit: contain; /* Ajustar imagen al contenedor */
+      max-height: 400px; /* Altura máxima de la imagen */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Gameopolis</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Ofertas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Testimonios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Encabezado -->
+  <header>
+    <div class="container">
+      <img src="/static/imagen/GAMEOPOLIS-removebg-preview.png" alt="Logotipo de la tienda" class="logo">
+      <h1>Tienda de Videojuegos</h1>
+      <div class="search-form">
+        <form action="#" method="get">
+          <input type="text" name="search" class="form-control-lg" placeholder="Buscar videojuegos...">
+          <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Separador -->
+  <div style="height: 50px;"></div>
+
+  <!-- Sección de Carrusel de Productos Destacados -->
+  <section class="carousel-section">
+    <div class="container">
+        <h2 class="destacados-title">Explora Nuestros juegos destacados</h2>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="/static/imagen/fornite.jpg" class="d-block w-100" alt="Juego 1">
+              </div>
+              <div class="col-md-4">
+                <img src="/static/imagen/gear.jpg" class="d-block w-100" alt="Juego 2">
+              </div>
+              <div class="col-md-4">
+                <img src="/static/imagen/ha.jpg" class="d-block w-100" alt="Juego 3">
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="/static/imagen/i.jpg" class="d-block w-100" alt="Juego 4">
+              </div>
+              <div class="col-md-4">
+                <img src="/static/imagen/fifa.jpg" class="d-block w-100" alt="Juego 5">
+              </div>
+              <div class="col-md-4">
+                <img src="/static/imagen/fifa.jpg" class="d-block w-100" alt="Juego 6">
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Siguiente</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div style="height: 50px;"></div>
+
+  <!-- Sección de Categorías -->
+  <section class="category-section">
+    <div class="container">
+      <h2 class="category-title">Explora Nuestras Categorías</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="category-item">
+            <img src="/static/imagen/aventura.jpg" alt="Aventura">
+            <h3>Aventura</h3>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="category-item">
+            <img src="/static/imagen/deportes.jpg" alt="Deportes">
+            <h3>Deportes</h3>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="category-item">
+            <img src="/static/imagen/estrategia.jpg" alt="Estrategia">
+            <h3>Estrategia</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div style="height: 50px;"></div>
+
+  <!-- Banners Promocionales -->
+  <section class="promo-banner">
+    <div class="container">
+      <h2>No te pierdas nuestras ofertas especiales</h2>
+      <p>¡Descubre descuentos exclusivos y promociones únicas!</p>
+      <a href="#" class="btn btn-light btn-lg">Ver Ofertas</a>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div style="height: 50px;"></div>
+
+  <!-- Sección de Testimonios -->
+  <section class="testimonial-section">
+    <div class="container">
+      <h2 class="text-center">Lo que dicen nuestros clientes</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="testimonial-item">
+            <p>"Gran variedad de juegos y excelente servicio al cliente. ¡Recomendado!"</p>
+            <p><em>- Juan Pérez</em></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="testimonial-item">
+            <p>"Compro todos mis juegos aquí. Siempre encuentro los mejores precios y ofertas."</p>
+            <p><em>- María Gómez</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador -->
+  <div style="height: 50px;"></div>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Tienda de Videojuegos. Todos los derechos reservados.</p>
+      <p>Contáctanos: info@tiendavideojuegos.com | Teléfono: 123-456-7890</p>
+      <p>Síguenos en redes sociales:</p>
+      <a href="#" class="btn btn-outline-light"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="btn btn-outline-light"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="btn btn-outline-light"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS y Font Awesome -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Punto de Venta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1B1726;
+            color: #E0E0E0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #2A223A;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #FF5A2C;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: #FFFFFF;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #FF5A2C;
+            border-radius: 3px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            background-color: #3F3456;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #FF5A2C;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #E04C1F;
+        }
+    </style>
+    <script>
+        // Función para limpiar el mensaje de error cuando se escribe en los campos de entrada
+        function limpiarMensajeError() {
+            document.getElementById("error-message").innerText = ""; // Borra el contenido del mensaje de error
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <!-- Mostrar mensaje de error si existe -->
+            <p id="error-message" class="error-message">{% if error %}Usuario o contraseña incorrectos{% endif %}</p>
+            <form action="{{ url_for('loggin') }}" method="post">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" class="form-control" required oninput="limpiarMensajeError()">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="form-control" required oninput="limpiarMensajeError()">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
